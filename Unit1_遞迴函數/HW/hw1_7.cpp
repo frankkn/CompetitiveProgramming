@@ -1,8 +1,13 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+int v[30] = {};
+int tmp[30] = {};
+int idx = 0;
+//bool visited[30] = {};
+int m, n;
 
-void print(int m, vector<int>& tmp)
+void print()
 {
   for(int i = 0; i < m; ++i)
   {
@@ -11,24 +16,24 @@ void print(int m, vector<int>& tmp)
   cout << "\n";
 }
 
-void dfs(int i, int n, int m, vector<int>& v, vector<int>& tmp, vector<bool>& visited)
+void dfs(int i, int k)
 {
   if(i == m)
   {
-    print(m, tmp);
+    print();
     return;
   }
-  for(int j = 0; j < n; ++j)
+  for(int j = k; j < n; ++j)
   {
-    if(!visited[v[j]])
+    //if(!visited[v[j]])
     {
       if(i == 0 || v[j] > tmp[i-1])
       {
-        visited[v[j]] = true;
-        tmp.push_back(v[j]);
-        dfs(i+1, n, m, v, tmp, visited);
-        visited[v[j]] = false;
-        tmp.pop_back();
+        //visited[v[j]] = true;
+        tmp[i] = v[j];
+        dfs(i+1,j);
+        //--idx;
+        //visited[v[j]] = false;
       }
     }
   }
@@ -38,14 +43,10 @@ int main()
 {
   int n, m;
   cin >> n >> m;
-  vector<int> v(n);
-  vector<int> tmp;
-  vector<bool> visited(n);
   for(int i = 0; i < n; ++i)
   {
     cin >> v[i];
   }
-  dfs(0, n, m, v, tmp, visited);
-
+  dfs(0,0);
   return 0;
 }
