@@ -1,14 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int v[22];
-int tmp[22];
-int idx = 0;
-bool visited[22];
-int m, n;
 
-
-void print()
+void print(int m, vector<int>& tmp)
 {
   for(int i = 0; i < m; ++i)
   {
@@ -17,11 +11,11 @@ void print()
   cout << "\n";
 }
 
-void dfs(int i)
+void dfs(int i, int n, int m, vector<int>& v, vector<int>& tmp, vector<bool>& visited)
 {
   if(i == m)
   {
-   print();
+    print(m, tmp);
     return;
   }
   for(int j = 0; j < n; ++j)
@@ -31,10 +25,10 @@ void dfs(int i)
       if(i == 0 || v[j] > tmp[i-1])
       {
         visited[v[j]] = true;
-        tmp[idx++] = v[j];
-        dfs(i+1);
-        --idx;
+        tmp.push_back(v[j]);
+        dfs(i+1, n, m, v, tmp, visited);
         visited[v[j]] = false;
+        tmp.pop_back();
       }
     }
   }
@@ -42,12 +36,16 @@ void dfs(int i)
 
 int main()
 {
+  int n, m;
   cin >> n >> m;
+  vector<int> v(n);
+  vector<int> tmp;
+  vector<bool> visited(n);
   for(int i = 0; i < n; ++i)
   {
     cin >> v[i];
   }
-  dfs(0);
+  dfs(0, n, m, v, tmp, visited);
 
   return 0;
 }
