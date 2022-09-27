@@ -1,7 +1,7 @@
-input:
+### input:
 3
 
-output:
+### output:
 0 1 2
 0 2 1
 1 0 2

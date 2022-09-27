@@ -1,7 +1,7 @@
-input:
+### input:
 3
 
-output:
+### output:
 {}
 {2}
 {1}

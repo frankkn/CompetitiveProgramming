@@ -1,11 +1,9 @@
-input: 
+### input: 
 "1 2 3 4 5"
 "123 456"
 "1,4,7,9"
 
-output:
+### output:
 15
 579
 21
-
-# g++ -o a test.cpp ; ./a.exe
