@@ -78,3 +78,4 @@ int main() {
     cout << "No answer\n";
   return 0;
 }
+
