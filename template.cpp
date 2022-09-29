@@ -1,4 +1,5 @@
 //Run with $g++ -o a <filename>.cpp ; ./a.exe
+//$measure-command { ./a.exe }
 #include <algorithm>
 #include <iostream>
 #include <string>
