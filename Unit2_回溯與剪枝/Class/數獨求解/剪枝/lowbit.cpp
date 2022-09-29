@@ -11,6 +11,7 @@ int row[9];
 int col[9];
 int subgrids[3][3];
 
+void update(int r, int c, int num);
 
 void input() {
   for (int r = 0; r < 9; ++r) {
@@ -18,7 +19,10 @@ void input() {
     cin >> buffer;
     for (int c = 0; c < 9; ++c) {
       if (isdigit(buffer[c]))
+      {
         grid[r][c] = 1 << (buffer[c] - '0');
+        update(r, c, grid[r][c]);
+      }
       else
         grid[r][c] = 0;
     }
