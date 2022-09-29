@@ -25,26 +25,42 @@ bool isValidQueenPosition(int y, int x) {
   return true;
 }
 
+
+int row[MAXN], m;
+void print()
+{
+  cout << "row = [";
+  for(int i = 0; i < n; ++i)
+  {
+    cout << row[i] << ",]"[i == n-1];
+  }
+  cout << "\n";
+}
+
 int ans;
 void dfs(int y) {
   if (y == n) {
-    ++ans;
+    print();
+    ans++;
     return;
   }
   for (int x = 0; x < n; ++x) {
     if (!isValidQueenPosition(y, x))
       continue;
     update(y, x, true);
+    row[m++] = x;
     dfs(y + 1);
     update(y, x, false);
+    --m;
   }
 }
+
 
 int main() 
 {
   cin >> n;
   dfs(0);
-  cout << ans << endl;
+  cout << "Total number of answers : " << ans;
   return 0;
 }
 
