@@ -35,7 +35,7 @@ void dfs(int y, int x, int move)
   if(!cur_vis[0] && !cur_vis[1] && cur_vis[2] && cur_vis[3])  return;
 
   if(y-1 >= 0 && x+1 < 7 && vis[y-1][x+1] && !cur_vis[0] && !cur_vis[2])  return;
-  if( y+1 < 7 && x+1 < 7 && vis[y+1][x+1] && !cur_vis[1] && !cur_vis[2])  return;
+  if(y+1 < 7 && x+1 < 7 && vis[y+1][x+1] && !cur_vis[1] && !cur_vis[2])  return;
   if(y-1 >= 0 && x-1 >= 0 && vis[y-1][x-1] && !cur_vis[0] && !cur_vis[3]) return;
   if(y+1 < 7 && x-1 >= 0 && vis[y+1][x-1]&& !cur_vis[1] && !cur_vis[3]) return;
 
