@@ -3,20 +3,23 @@
 #include <vector>
 using namespace std;
 
-bool dfs(vector<int>& nums, int k, int cur_sum, int target, vector<bool>& used, int index)
+int MASK;
+
+int lowbit(int x) { return (x & -x); }
+
+bool dfs(vector<int>& nums, int k, int cur_sum, int target,int used)
 {
   if(k == 0)	return true;
   if(cur_sum > target)	return false;
-  if(cur_sum == target)	return dfs(nums, k-1, 0, target, used, 0);
-  
-  for(int i = index; i < used.size(); ++i)
+  if(cur_sum == target)	return dfs(nums, k-1, 0, target,used);
+  int ori = used;
+  for(int num = 0; used; used ^= num)
   {
-  	if(used[i]) continue;
-    used[i] = true;
-    cur_sum += nums[i];
-    if(dfs(nums, k, cur_sum, target, used, index+1))	return true;
-    used[i] = false;
-    cur_sum -= nums[i];
+  	num = lowbit(used);
+    cur_sum += nums[__lg(num)];
+    if(dfs(nums, k, cur_sum, target, ori^num))	return true;
+	
+    cur_sum -= nums[num];
     if(cur_sum == 0)	break;
   }
   return false;
@@ -28,8 +31,9 @@ bool k_way_partition(vector<int>& nums, int k)
   int sum = accumulate(nums.begin(), nums.end(), 0);
   if(sum % k)	return false;
   int target = sum / k;
-  vector<bool> used(nums.size(), false);
-  return dfs(nums, k, 0, target, used, 0);
+  int n = nums.size();
+  int used = (1 << n)-1;
+  return dfs(nums, k, 0, target, used);
 }
 
 int main()
