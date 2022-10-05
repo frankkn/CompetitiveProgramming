@@ -3,8 +3,6 @@
 #include <vector>
 using namespace std;
 
-int MASK;
-
 int lowbit(int x) { return (x & -x); }
 
 bool dfs(vector<int>& nums, int k, int cur_sum, int target,int used)
@@ -18,13 +16,11 @@ bool dfs(vector<int>& nums, int k, int cur_sum, int target,int used)
   	num = lowbit(used);
     cur_sum += nums[__lg(num)];
     if(dfs(nums, k, cur_sum, target, ori^num))	return true;
-	
     cur_sum -= nums[num];
     if(cur_sum == 0)	break;
   }
   return false;
 }
-  
   
 bool k_way_partition(vector<int>& nums, int k)
 {
@@ -45,9 +41,15 @@ int main()
     int n;
     cin >> n;
     vector<int> nums(n,0);
-	for(auto& n_i:nums)	cin >> n_i;    
-  	if(k_way_partition(nums, 4))	cout << "yes\n";
-    else	cout << "no\n";
+	  for(auto& n_i:nums) {	cin >> n_i; }    
+  	if(k_way_partition(nums, 4)) 
+    {  
+      cout << "yes\n"; 
+    }
+    else	
+    {
+      cout << "no\n";
+    }
   }
   return 0;
 }
