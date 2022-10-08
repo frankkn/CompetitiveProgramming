@@ -38,6 +38,10 @@
     "xstddef": "cpp",
     "xstring": "cpp",
     "xtr1common": "cpp",
-    "xutility": "cpp"
+    "xutility": "cpp",
+    "bitset": "cpp",
+    "numeric": "cpp",
+    "set": "cpp",
+    "xtree": "cpp"
   }
 }
