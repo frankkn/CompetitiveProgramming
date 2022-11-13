@@ -5,7 +5,7 @@ using namespace std;
 template <typename T, typename FuncT>
 pair<T, T> binarySearch(T L, T R, FuncT check) {
   if(check(R) == true)  return {R, R+1};
-  if(check(L) == true)  return {L-1, L};
+  if(check(L) == false)  return {L-1, L};
   while (L + 1 < R) {
     T Mid = L + (R - L) / 2;
     if (check(Mid)) L = Mid;
