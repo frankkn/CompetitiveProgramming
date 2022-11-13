@@ -14,6 +14,19 @@ pair<T, T> binarySearch(T L, T R, FuncT check) {
   return {L, R};
 }
 
+pair<int, int> binary_search(int L, int R, function<bool(int)> check)
+{
+    if(check(R) == true)    return  {R, R+1};
+    if(check(L) == false)    return  {L-1, L};
+    while(L+1 < R)
+    {
+        int M = (L+R)/2;
+        if(check(M))    L = M;   
+        else    R = M;
+    }
+    return {L, R};
+}
+
 int main()
 {
   int arr[] = {2,3,3,4,5,6,8,9,10};
