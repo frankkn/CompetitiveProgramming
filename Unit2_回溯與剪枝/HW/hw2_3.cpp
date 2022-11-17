@@ -1,55 +1,69 @@
-#include <iostream>
-#include <numeric>
-#include <vector>
+#include <bits/stdc++.h>
+
 using namespace std;
 
-int lowbit(int x) { return (x & -x); }
+int n, total, len;
+int MASK;
+bool out = false;
+vector<int> v;
 
-bool dfs(vector<int>& nums, int k, int cur_sum, int target,int used)
-{
-  if(k == 0)	return true;
-  if(cur_sum > target)	return false;
-  if(cur_sum == target)	return dfs(nums, k-1, 0, target,used);
-  int ori = used;
-  for(int num = 0; used; used ^= num)
-  {
-  	num = lowbit(used);
-    cur_sum += nums[__lg(num)];
-    if(dfs(nums, k, cur_sum, target, ori^num))	return true;
-    cur_sum -= nums[num];
-    if(cur_sum == 0)	break;
-  }
-  return false;
-}
-  
-bool k_way_partition(vector<int>& nums, int k)
-{
-  int sum = accumulate(nums.begin(), nums.end(), 0);
-  if(sum % k)	return false;
-  int target = sum / k;
-  int n = nums.size();
-  int used = (1 << n)-1;
-  return dfs(nums, k, 0, target, used);
+void dfs(int remain, int cur, int ori, int legal) {
+    if (remain == 0) {
+        cout << "yes\n";
+        out = true;
+        return;
+    }
+    if (!cur) {
+        dfs(remain-1, len, ori, ori);
+        return;
+    }
+    for (int num = 0; legal; legal ^= num) {
+        num = ((~legal+1) & legal);
+        if (cur >= v[__lg(num)]) {
+            dfs(remain, cur-v[__lg(num)], ori ^ num, legal ^ num);
+            if (out == true)
+                return;
+        }
+    }
+    return;
 }
 
-int main()
-{
-  int t;
-  cin >> t;
-  while(t--)
-  {
-    int n;
+void solve() {
+    total = 0;
     cin >> n;
-    vector<int> nums(n,0);
-	  for(auto& n_i:nums) {	cin >> n_i; }    
-  	if(k_way_partition(nums, 4)) 
-    {  
-      cout << "yes\n"; 
+    v.resize(n, 0);
+    for (int i = 0; i < n; ++i) {
+        cin >> v[i];
+        total += v[i];
     }
-    else	
-    {
-      cout << "no\n";
+    if (total % 4) {
+        cout << "no\n";
+        return;
     }
-  }
-  return 0;
+    out = false;
+    len = (total >> 2);
+    sort(v.begin(), v.end());
+    reverse(v.begin(), v.end());
+    for (int i = 0; i < 4; ++i) {
+        if (v[i] > len) {
+            cout << "no\n";
+            return;
+        }
+    }
+    MASK = (1 << n) - 1;
+    dfs(3, len, MASK, MASK);
+    if (out == false)   cout << "no\n";
+    return;
+}
+
+int main() {
+    cin.tie(nullptr);
+    ios_base::sync_with_stdio(false);
+
+    int T;
+    cin >> T;
+    while(T--) {
+        solve();
+    }
+    return 0;
 }
