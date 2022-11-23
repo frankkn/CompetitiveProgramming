@@ -17,4 +17,10 @@ https://reurl.cc/588n2q
 https://reurl.cc/855m2g  
 
 7. Basic Math  
-https://reurl.cc/KXXgpM  
+https://reurl.cc/KXXgpM
+
+8. Tree
+https://reurl.cc/33eKkM  
+
+9. Disjoint Set
+https://reurl.cc/85NDeg
