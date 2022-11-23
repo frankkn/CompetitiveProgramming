@@ -42,6 +42,12 @@
     "bitset": "cpp",
     "numeric": "cpp",
     "set": "cpp",
-    "xtree": "cpp"
+    "xtree": "cpp",
+    "deque": "cpp",
+    "functional": "cpp",
+    "list": "cpp",
+    "queue": "cpp",
+    "unordered_map": "cpp",
+    "xhash": "cpp"
   }
 }
