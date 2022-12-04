@@ -19,8 +19,14 @@ https://reurl.cc/855m2g
 7. Basic Math  
 https://reurl.cc/KXXgpM
 
-8. Tree
+8. Tree  
 https://reurl.cc/33eKkM  
 
-9. Disjoint Set
-https://reurl.cc/85NDeg
+9. Disjoint Set  
+https://reurl.cc/85NDeg  
+
+10. Graph  
+https://reurl.cc/10KxzV  
+
+11. Weighted Graph
+https://reurl.cc/OEY1eX
