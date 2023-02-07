@@ -1,3 +1,14 @@
+/*
+### input: 
+"1 2 3 4 5"  
+"123 456"  
+"1,4,7,9"  
+
+### output:
+15  
+579  
+21  
+*/
 #include <iostream>
 #include <vector>
 #include <string>
