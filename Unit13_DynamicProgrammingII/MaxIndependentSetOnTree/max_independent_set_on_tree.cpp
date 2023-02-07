@@ -8,8 +8,6 @@ using namespace std;
 vector<vector<int>> Tree;
 vector<vector<int>> DP;
 
-// int DP[2][100000];
-
 //以u為root，pick=0/1(不挑或挑)的最大獨立集
 void dfs(int u, int parent){
   DP[0][u] = 0;
