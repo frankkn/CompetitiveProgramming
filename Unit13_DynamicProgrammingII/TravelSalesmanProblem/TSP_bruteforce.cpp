@@ -20,9 +20,8 @@ void dfs(int x, int cost){
     ans = min(ans, cost);
     return;
   }
-
   for(int y = 0; y < n; ++y){
-    if(y == x || used[y]){
+    if(y == x || used[y] ){
       continue;
     }
     used[y] = true;
@@ -33,6 +32,7 @@ void dfs(int x, int cost){
 
 int solve(){
   used.resize(n, false);
+  for(auto x:used)  cout << x << endl;
   ans = 0x3f3f3f3f; // kinda 10^9 or INF
   dfs(0, 0);
   return ans;
@@ -43,15 +43,19 @@ int main()
   cin.tie(nullptr);
   ios::sync_with_stdio(false);
 
-  int n;
   cin >> n;
+
   for(int i = 0; i < n; ++i){
     for(int j = 0; j < n; ++j){
       cin >> dist[i][j];
     }
   }
 
-  cout << solve();
+  // solve();
+  used.resize(n, false);
+  ans = 0x3f3f3f3f; // kinda 10^9 or INF
+  dfs(0, 0);
+  cout << ans;
 
   return 0;
 }
