@@ -4,7 +4,6 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#define int long long int
 using namespace std;
 
 int main()
