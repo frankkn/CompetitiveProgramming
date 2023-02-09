@@ -12,17 +12,22 @@ vector<int> DP[2];
 
 //以u為root，pick=0/1(不挑或挑)的最大獨立集
 int dfs(int u, int pick, int parent = -1){
-  if(u == parent){
-    return 0;
-  }
+  // 無法正確擋反覆遞迴
+  // if(u == parent){
+  //   return 0;
+  // }
+
   if(DP[pick][u]){
     return DP[pick][u];
   }
-  if(Tree[u].size() == 1){ //leaf node(在Tree上只會有一個連回parent的node)
-    return pick;
-  }
+
+  // 無法判斷root跟leaf 
+  // if(Tree[u].size() == 1){ //leaf node(在Tree上只會有一個連回parent的node)
+  //   return pick;
+  // }
 
   for(auto v:Tree[u]){
+    // if(v == parent){ continue; }
     if(pick == 0){
       DP[pick][u] += max(dfs(v, 0, u), dfs(v, 1, u)); 
     }else{
