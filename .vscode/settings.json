@@ -50,5 +50,6 @@
     "unordered_map": "cpp",
     "xhash": "cpp",
     "stack": "cpp"
-  }
+  },
+  "C_Cpp.errorSquiggles": "disabled"
 }
